@@ -1,32 +1,71 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>One Million Global Platform</title>
+    <title>1MG Platform | One Million Global</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        #map { height: 400px; width: 100%; border-radius: 15px; shadow: lg; }
+        .card { transition: transform 0.2s; }
+        .card:hover { transform: scale(1.02); }
+    </style>
 </head>
 <body class="bg-gray-100 font-sans">
-    <nav class="bg-blue-700 p-4 text-white shadow-lg">
-        <h1 class="text-2xl font-bold text-center">1MG PLATFORM</h1>
+    <nav class="bg-blue-800 p-4 text-white shadow-xl">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">1MG PLATFORM</h1>
+            <span class="bg-blue-600 px-3 py-1 rounded-full text-sm">Frédéric - Admin</span>
+        </div>
     </nav>
 
     <div class="max-w-6xl mx-auto p-6">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="bg-white p-6 rounded-lg shadow hover:shadow-xl transition border-t-4 border-green-500">
+            
+            <div class="card bg-white p-6 rounded-xl shadow-md border-t-4 border-green-500">
                 <h2 class="text-xl font-bold mb-2">💳 Payflow</h2>
-                <p class="text-gray-600 text-sm">Système de paiement universel et portefeuille numérique.</p>
+                <p class="text-gray-600 text-sm mb-4">Système de paiement universel et portefeuille numérique.</p>
+                <div class="text-2xl font-mono font-bold text-green-600">1,000,000 1MG</div>
+                <button class="mt-4 w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600">Gérer mon solde</button>
             </div>
-            <div class="bg-white p-6 rounded-lg shadow hover:shadow-xl transition border-t-4 border-blue-500">
+
+            <div class="card bg-white p-6 rounded-xl shadow-md border-t-4 border-blue-500">
                 <h2 class="text-xl font-bold mb-2">📍 Mailport</h2>
-                <p class="text-gray-600 text-sm">Adresses numériques et suivi de colis sur carte.</p>
+                <p class="text-gray-600 text-sm mb-4">Adresses numériques et suivi de colis en temps réel.</p>
+                <div class="bg-blue-50 p-3 rounded text-blue-700 text-center font-bold italic">Services actifs</div>
             </div>
-            <div class="bg-white p-6 rounded-lg shadow hover:shadow-xl transition border-t-4 border-red-500">
+
+            <div class="card bg-white p-6 rounded-xl shadow-md border-t-4 border-red-500">
                 <h2 class="text-xl font-bold mb-2">🏠 1M Property</h2>
-                <p class="text-gray-600 text-sm">Gestion immobilière et location globale.</p>
+                <p class="text-gray-600 text-sm mb-4">Gestion immobilière et location globale simplifiée.</p>
+                <button class="mt-4 w-full bg-red-500 text-white py-2 rounded-lg hover:bg-red-600">Voir les biens</button>
             </div>
         </div>
+
+        <div class="mt-8 bg-white p-6 rounded-xl shadow-md border border-gray-200">
+            <h2 class="text-xl font-bold mb-4 text-blue-800 italic">Carte Interactive One Million Global</h2>
+            <div id="map">Chargement de la carte...</div>
+        </div>
+        
         <p class="mt-8 text-center text-gray-500 italic">Plateforme globale connectant un million d'utilisateurs.</p>
     </div>
+
+    <script>
+        function initMap() {
+            const defaultPos = { lat: 48.8566, lng: 2.3522 }; // Paris
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 12,
+                center: defaultPos,
+                mapId: 'DEMO_MAP_ID' 
+            });
+            new google.maps.Marker({
+                position: defaultPos,
+                map: map,
+                title: "1MG Central Office"
+            });
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7XDhs43wtquk7BQlj1hkNNDBugZPn7xs&callback=initMap" async defer></script>
 </body>
 </html>
